@@ -1,0 +1,647 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons left *ngIf="switchDataMore==1 && imageType == 0">
+        <button ion-button icon-only (click)="saveBookMark(pageNumber)">
+           <ion-icon ios="ios-star-outline" md="md-star-outline"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-buttons left *ngIf="switchDataMore==1 && imageType == 1">
+    <button ion-button icon-only (click)="removeBookMark(pageNumber)">
+        <ion-icon ios="ios-star" md="md-star"></ion-icon>
+    </button>
+  </ion-buttons>
+    <ion-buttons left *ngIf="switchDataMore==0 && imageSoundType == 0">
+    <button ion-button icon-only (click)="saveBookSoundMark(redingType)">
+        <ion-icon ios="ios-add" md="md-add" style="font-size:2.5em"></ion-icon>
+    </button>
+  </ion-buttons> 
+    <ion-buttons right>
+		<button ion-button icon-only (click)="goBack()">
+          <ion-icon id="{{ 'id' | translate }}" ios="ios-arrow-{{ 'side' | translate }}" md="md-arrow-{{ 'side' | translate }}"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-title>{{pageNameTra}}</ion-title>
+  </ion-navbar>
+  <ion-segment [(ngModel)]="selectSegment" *ngIf="pageNumber!=31 && pageNumber!=32">
+      <ion-segment-button value="reading" (click) = "changeBckColor(1)" *ngIf="showReadOrWrite">
+        {{ 'reading' | translate }}
+      </ion-segment-button>
+      <ion-segment-button value="listening" (click) = "changeBckColor(0)">
+        {{ 'listening' | translate }}
+      </ion-segment-button>
+    </ion-segment>
+</ion-header>
+<ion-content class="{{changeColor}}" (ionScroll)="detectBottom()" >
+<div *ngIf="pageNumber==31">
+<ion-item>
+      <div style="text-align:center;">
+   	<div *ngFor="let item of numperOFimage">
+    	<img src="{{item}}">
+    </div>
+      </div>
+    </ion-item>
+</div>
+<div *ngIf="pageNumber==5">
+   <div [ngSwitch]="selectSegment">
+    <ion-list *ngSwitchCase="'listening'" style="background-color:#ffffff">
+         <div style="position:relative; top:15px">
+            <ion-grid style="direction:ltr">
+        <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+        <ion-col style="text-align:center">
+            <div>
+                <div (click)="openMenu()" class="selectButton">
+                 <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%" *ngIf="lang == 2">
+                    <ion-col>
+                       <div style="height:25px;text-align:left;"><img src="assets/imgs/mick.png" width="25px" height="25px"></div>
+                    </ion-col>
+                    <ion-col style="height:25px; padding:10px; white-space:nowrap">
+                    <span *ngIf="redingType != 1 && redingType != 2 && redingType != 3 && redingType != 4 && redingType != 5">{{ 'selectvoiceName' | translate }}</span>
+                    	<span *ngIf="redingType == 1">{{ 'voiceOne' | translate }}</span>
+                        <span *ngIf="redingType == 2">{{ 'voiceTow' | translate }}</span>
+                        <span *ngIf="redingType == 3">{{ 'voiceThree' | translate }}</span>
+                        <span *ngIf="redingType == 4">{{ 'voiceFore' | translate }}</span>
+                        <span *ngIf="redingType == 5">{{ 'voiceFive' | translate }}</span>
+                    </ion-col>
+                    <ion-col style="text-align:center">
+                       <div style="height:25px;text-align:right; padding:3px"><ion-icon id="{{ 'id' | translate }}" ios="ios-arrow-{{ 'side' | translate }}" md="md-arrow-{{ 'side' | translate }}"></ion-icon></div>
+                    </ion-col>
+                </ion-row>
+                 <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%" *ngIf="lang == 1">
+                    <ion-col style="text-align:center">
+                       <div style="height:25px;text-align:left; padding:3px"><ion-icon id="{{ 'id' | translate }}" ios="ios-arrow-{{ 'side' | translate }}" md="md-arrow-{{ 'side' | translate }}"></ion-icon></div>
+                    </ion-col>
+                    <ion-col style="height:25px; padding:10px; white-space:nowrap">
+                    <span *ngIf="redingType != 1 && redingType != 2 && redingType != 3 && redingType != 4 && redingType != 5">{{ 'selectvoiceName' | translate }}</span>
+                    <span *ngIf="redingType == 1">{{ 'voiceOne' | translate }}</span>
+                        <span *ngIf="redingType == 2">{{ 'voiceTow' | translate }}</span>
+                        <span *ngIf="redingType == 3">{{ 'voiceThree' | translate }}</span>
+                        <span *ngIf="redingType == 4">{{ 'voiceFore' | translate }}</span>
+                        <span *ngIf="redingType == 5">{{ 'voiceFive' | translate }}</span>
+                    </ion-col>
+                    <ion-col>
+                       <div style="height:25px;text-align:right"><img src="assets/imgs/mick.png" width="25px" height="25px"></div>
+                    </ion-col>
+                </ion-row>
+                </div>
+            </div>
+        <br>
+        </ion-col>
+        </ion-row>
+            <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+                <ion-col style="text-align:center">
+                    <button ion-button icon-only (click)="controlSeconds('back')" >
+                        <img src="assets/imgs/12.png" width="50px" height="50px">
+                    </button>
+                </ion-col>
+                <ion-col style="text-align:center">
+                    <button ion-button icon-only (click)="playRecording()" *ngIf="!is_playing[redingType]">
+                        <img src="assets/imgs/10.png" width="50px" height="50px">
+                    </button>
+                    
+                    <button ion-button icon-only (click)="pausePlayRecording()" *ngIf="is_playing[redingType]">
+                        <img src="assets/imgs/111.png" width="50px" height="50px">
+                    </button>
+                </ion-col>
+                <ion-col style="text-align:center">
+                    <button ion-button icon-only (click)="controlSeconds('forward')">
+                        <img src="assets/imgs/11.png" width="50px" height="50px">
+                    </button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+        </div>
+        <div>
+         <div style="position:relative">
+              <ion-range min="0" max="{{duration[redingType]}}" [(ngModel)]="position[redingType]" ></ion-range>
+        </div>
+            <div>
+                <ion-grid style="direction:ltr">
+                    <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+                        <ion-col style="text-align:center">
+                        	<ion-label range-right class="rangeOne">{{ position[redingType]*1000 | date:'HH:mm:ss':'UTC' }}</ion-label>
+                        </ion-col>
+                        <ion-col style="text-align:center">
+                        <div style="padding-bottom:3px"><img src="assets/imgs/increesRepet.png" width="30px" height="30px" (click)="repeatAudio(repeatNumber[soundOfArray[redingType][4]],redingType,1)"></div>
+                        <div class="repeted" dir="{{ 'directionTow' | translate }}" style="padding: 7px;width: 100px;text-align: center;margin: 8px auto;">
+                        	<span>{{ 'repeat' | translate }}</span> <span style="vertical-align:middle"><img src="assets/imgs/repetad.png" width="15px" height="15px"></span> <span class="repetedSpan" *ngIf="repeatNumber[soundOfArray[redingType][4]] >= 1">{{repeatNumber[soundOfArray[redingType][4]]}}</span>
+                        </div>
+                        <div style="padding-top:3px"><img src="assets/imgs/repetRemove.png" width="30px" height="30px" (click)="repeatAudio(repeatNumber[soundOfArray[redingType][4]],redingType,2)"></div>
+                        <ion-icon style="color:#185e85; font-size:25px" name="arrow-round-down" (click)="downloadeRecordingIos(redingType)" *ngIf="typeDevice==1"></ion-icon>
+                        <ion-icon style="color:#185e85; font-size:25px" name="arrow-round-down" (click)="downloadeRecordingAndroid(redingType)" *ngIf="typeDevice==2"></ion-icon>
+                        </ion-col>
+                        <ion-col style="text-align:center">
+                            <ion-label range-left *ngIf="duration[redingType] == -1" class="rangeTow">00:00:00</ion-label>
+                            <ion-label range-left *ngIf="duration[redingType] != -1" class="rangeTow">{{ duration[redingType]*1000 | date:'HH:mm:ss':'UTC' }}</ion-label>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+        </div>
+    </ion-list>
+    <ion-list *ngSwitchCase="'reading'" >
+     <ion-slides #Slides pager="false" loop='false' zoom="true" dir="{{directionOfSlider}}">
+	<ion-slide>
+        <div><img src="assets/imgs/paqara/0.jpg"></div>
+        <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/1.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/2.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/3.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/4.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/5.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/6.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/7.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/8.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/9.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/10.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/11.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/12.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/13.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/14.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/15.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/16.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/17.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/18.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/19.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/20.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/21.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/22.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/23.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/24.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/25.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/26.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/27.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/28.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/29.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/30.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/31.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/32.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/33.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/34.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/35.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/36.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/37.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/38.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/39.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/40.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/41.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/42.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/43.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+    <ion-slide>
+         <div><img src="assets/imgs/paqara/44.jpg"></div>
+         <ion-fab bottom left >
+        	<button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow2.gif" width="25px" height="25px"></button>
+        </ion-fab>
+    </ion-slide>
+     <ion-slide>
+         <div><img src="assets/imgs/paqara/45.jpg"></div>
+    </ion-slide>
+</ion-slides>
+    </ion-list>
+  </div>
+</div>
+<div *ngIf="pageNumber==4 || pageNumber==6 || pageNumber==8 || pageNumber==13 || pageNumber==14 || pageNumber==33">
+<div [ngSwitch]="selectSegment">
+    <ion-list *ngSwitchCase="'listening'" style="background-color:#ffffff">
+         <div style="position:relative; top:15px">
+            <ion-grid style="direction:ltr">
+            <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+                <ion-col style="text-align:center;padding-top: 22px;cursor:pointer">
+                     <img src="assets/imgs/soundOne.png" width="50px" height="25px" *ngIf="lightButton!=1" (click)="changeSoundShow(1)">
+                     <img src="assets/imgs/soundOnehover.png" width="50px" height="25px" *ngIf="lightButton==1" (click)="changeSoundShow(1)">
+                </ion-col>
+                 <ion-col style="text-align:center">
+                    <button ion-button icon-only (click)="controlSeconds('back')" >
+                        <img src="assets/imgs/12.png" width="50px" height="50px">
+                    </button>
+                </ion-col>
+                <ion-col style="text-align:center">
+                   
+                    <button ion-button icon-only (click)="playRecording()" *ngIf="!is_playing[redingType]">
+                        <img src="assets/imgs/10.png" width="50px" height="50px">
+                    </button>
+                    <button ion-button icon-only (click)="pausePlayRecording()" *ngIf="is_playing[redingType]">
+                        <img src="assets/imgs/111.png" width="50px" height="50px">
+                    </button>
+                </ion-col>
+                <ion-col style="text-align:center">
+                    <button ion-button icon-only (click)="controlSeconds('forward')">
+                        <img src="assets/imgs/11.png" width="50px" height="50px">
+                    </button>
+                </ion-col>
+                <ion-col style="text-align:center;padding-top: 22px;cursor:pointer">
+                     <img src="assets/imgs/soundTow.png" width="50px" height="25px" *ngIf="lightButton!=2" (click)="changeSoundShow(2)">
+                     <img src="assets/imgs/soundTowHover.png" width="50px" height="25px" *ngIf="lightButton==2" (click)="changeSoundShow(2)">
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+        </div>
+        <div>
+          <div style="position:relative">
+              <ion-range min="0" max="{{duration[redingType]}}" [(ngModel)]="position[redingType]" ></ion-range>
+        </div>
+           <div>
+                <ion-grid style="direction:ltr">
+                    <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+                        <ion-col style="text-align:center">
+                        	<ion-label range-right class="rangeOne">{{ position[redingType]*1000 | date:'HH:mm:ss':'UTC' }}</ion-label>
+                        </ion-col>
+                        <ion-col style="text-align:center"> 
+                        <div style="padding-bottom:3px"><img src="assets/imgs/increesRepet.png" width="30px" height="30px" (click)="repeatAudio(repeatNumber[soundOfArray[redingType][4]],redingType,1)"></div>
+                        <div class="repeted" dir="{{ 'directionTow' | translate }}" style="padding: 7px;width: 100px;text-align: center;margin: 8px auto;">
+                        	<span>{{ 'repeat' | translate }}</span> <span style="vertical-align:middle"><img src="assets/imgs/repetad.png" width="15px" height="15px"></span> <span class="repetedSpan" *ngIf="repeatNumber[soundOfArray[redingType][4]] >= 1">{{repeatNumber[soundOfArray[redingType][4]]}}</span>
+                        </div>
+                        <div style="padding-top:3px"><img src="assets/imgs/repetRemove.png" width="30px" height="30px" (click)="repeatAudio(repeatNumber[soundOfArray[redingType][4]],redingType,2)"></div>
+                    <ion-icon style="color:#185e85; font-size:25px" name="arrow-round-down" (click)="downloadeRecordingIos(redingType)" *ngIf="typeDevice==1"></ion-icon>
+                    <ion-icon style="color:#185e85; font-size:25px" name="arrow-round-down" (click)="downloadeRecordingAndroid(redingType)" *ngIf="typeDevice==2"></ion-icon>
+                        </ion-col>
+                        <ion-col style="text-align:center">
+                            <ion-label range-left *ngIf="duration[redingType] == -1" class="rangeTow">00:00:00</ion-label>
+                            <ion-label range-left *ngIf="duration[redingType] != -1" class="rangeTow">{{ duration[redingType]*1000 | date:'HH:mm:ss':'UTC' }}</ion-label>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+        </div>
+    </ion-list>
+    <ion-list *ngSwitchCase="'reading'" >
+    <ion-item>
+          <div style="text-align:center;">
+        <div *ngFor="let item of numperOFimage">
+            <img src="{{item}}">
+        </div>
+          </div>
+       </ion-item>
+     </ion-list>
+  </div>
+</div>
+<div *ngIf="pageNumber!=31 && pageNumber!=5 && pageNumber!=4 && pageNumber!=6 && pageNumber!=8 && pageNumber!=13 && pageNumber!=14 && pageNumber!=33">
+   <div [ngSwitch]="selectSegment">
+    <ion-list *ngSwitchCase="'listening'" style="background-color:#ffffff">
+         <div style="position:relative; top:15px">
+            <ion-grid style="direction:ltr">
+            <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+               
+                 <ion-col style="text-align:center">
+                    <button ion-button icon-only (click)="controlSeconds('back')" >
+                        <img src="assets/imgs/12.png" width="50px" height="50px">
+                    </button>
+                </ion-col>
+                <ion-col style="text-align:center">
+                     
+                    <button ion-button icon-only (click)="playRecording()" *ngIf="!is_playing[redingType]">
+                        <img src="assets/imgs/10.png" width="50px" height="50px">
+                    </button>
+                    <button ion-button icon-only (click)="pausePlayRecording()" *ngIf="is_playing[redingType]">
+                        <img src="assets/imgs/111.png" width="50px" height="50px">
+                    </button>
+                </ion-col>
+                <ion-col style="text-align:center">
+                    <button ion-button icon-only (click)="controlSeconds('forward')">
+                        <img src="assets/imgs/11.png" width="50px" height="50px">
+                    </button>
+                </ion-col>
+                
+            </ion-row>
+        </ion-grid>
+        </div>
+        <div>
+          <div style="position:relative">
+              <ion-range min="0" max="{{duration[redingType]}}" [(ngModel)]="position[redingType]" ></ion-range>
+        </div>
+           <div>
+                <ion-grid style="direction:ltr">
+                    <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+                        <ion-col style="text-align:center">
+                        	<ion-label range-right class="rangeOne">{{ position[redingType]*1000 | date:'HH:mm:ss':'UTC' }}</ion-label>
+                        </ion-col>
+                        <ion-col style="text-align:center"> 
+                        <div style="padding-bottom:3px"><img src="assets/imgs/increesRepet.png" width="30px" height="30px" (click)="repeatAudio(repeatNumber[soundOfArray[redingType][4]],redingType,1)"></div>
+                        <div class="repeted" dir="{{ 'directionTow' | translate }}" style="padding: 7px;width: 100px;text-align: center;margin: 8px auto;">
+                        	<span>{{ 'repeat' | translate }}</span> <span style="vertical-align:middle"><img src="assets/imgs/repetad.png" width="15px" height="15px"></span> <span class="repetedSpan" *ngIf="repeatNumber[soundOfArray[redingType][4]] >= 1">{{repeatNumber[soundOfArray[redingType][4]]}}</span>
+                        </div>
+                        <div style="padding-top:3px"><img src="assets/imgs/repetRemove.png" width="30px" height="30px" (click)="repeatAudio(repeatNumber[soundOfArray[redingType][4]],redingType,2)"></div>
+                        <ion-icon style="color:#185e85; font-size:25px" name="arrow-round-down" (click)="downloadeRecordingIos(redingType)" *ngIf="typeDevice==1"></ion-icon>
+                        <ion-icon style="color:#185e85; font-size:25px" name="arrow-round-down" (click)="downloadeRecordingAndroid(redingType)" *ngIf="typeDevice==2"></ion-icon>
+                        </ion-col>
+                        <ion-col style="text-align:center">
+                            <ion-label range-left *ngIf="duration[redingType] == -1" class="rangeTow">00:00:00</ion-label>
+                            <ion-label range-left *ngIf="duration[redingType] != -1" class="rangeTow">{{ duration[redingType]*1000 | date:'HH:mm:ss':'UTC' }}</ion-label>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+        </div>
+    </ion-list>
+    <ion-list *ngSwitchCase="'reading'" >
+   <ion-item>
+          <div style="text-align:center;">
+        <div *ngFor="let item of numperOFimage">
+            <img src="{{item}}">
+        </div>
+          </div>
+       </ion-item>
+    </ion-list>
+  </div>
+</div>
+<div *ngIf="pageNumber==32">
+   <div>
+    <ion-list style="background-color:#ffffff">
+         <div style="position:relative; top:15px">
+            <ion-grid style="direction:ltr">
+            <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+                 <ion-col style="text-align:center">
+                    <button ion-button icon-only (click)="controlSeconds('back')" >
+                        <img src="assets/imgs/12.png" width="50px" height="50px">
+                    </button>
+                </ion-col>
+                <ion-col style="text-align:center">
+                     
+                    <button ion-button icon-only (click)="playRecording()" *ngIf="!is_playing[redingType]">
+                        <img src="assets/imgs/10.png" width="50px" height="50px">
+                    </button>
+                    <button ion-button icon-only (click)="pausePlayRecording()" *ngIf="is_playing[redingType]">
+                        <img src="assets/imgs/111.png" width="50px" height="50px">
+                    </button>
+                </ion-col>
+                <ion-col style="text-align:center">
+                    <button ion-button icon-only (click)="controlSeconds('forward')">
+                        <img src="assets/imgs/11.png" width="50px" height="50px">
+                    </button>
+                </ion-col>
+                
+            </ion-row>
+        </ion-grid>
+        </div>
+        <div>
+          <div style="position:relative">
+              <ion-range min="0" max="{{duration[redingType]}}" [(ngModel)]="position[redingType]" ></ion-range>
+        </div>
+           <div>
+                <ion-grid style="direction:ltr">
+                    <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+                        <ion-col style="text-align:center">
+                        	<ion-label range-right class="rangeOne">{{ position[redingType]*1000 | date:'HH:mm:ss':'UTC' }}</ion-label>
+                        </ion-col>
+                        <ion-col style="text-align:center"> 
+                        <div style="padding-bottom:3px"><img src="assets/imgs/increesRepet.png" width="30px" height="30px" (click)="repeatAudio(repeatNumber[soundOfArray[redingType][4]],redingType,1)"></div>
+                        <div class="repeted" dir="{{ 'directionTow' | translate }}" style="padding: 7px;width: 100px;text-align: center;margin: 8px auto;">
+                        	<span>{{ 'repeat' | translate }}</span> <span style="vertical-align:middle"><img src="assets/imgs/repetad.png" width="15px" height="15px"></span> <span class="repetedSpan" *ngIf="repeatNumber[soundOfArray[redingType][4]] >= 1">{{repeatNumber[soundOfArray[redingType][4]]}}</span>
+                        </div>
+                        <div style="padding-top:3px"><img src="assets/imgs/repetRemove.png" width="30px" height="30px" (click)="repeatAudio(repeatNumber[soundOfArray[redingType][4]],redingType,2)"></div>
+                        <ion-icon style="color:#185e85; font-size:25px" name="arrow-round-down" (click)="downloadeRecordingIos(redingType)" *ngIf="typeDevice==1"></ion-icon>
+                        <ion-icon style="color:#185e85; font-size:25px" name="arrow-round-down" (click)="downloadeRecordingAndroid(redingType)" *ngIf="typeDevice==2"></ion-icon>
+                        </ion-col>
+                        <ion-col style="text-align:center">
+                            <ion-label range-left *ngIf="duration[redingType] == -1" class="rangeTow">00:00:00</ion-label>
+                            <ion-label range-left *ngIf="duration[redingType] != -1" class="rangeTow">{{ duration[redingType]*1000 | date:'HH:mm:ss':'UTC' }}</ion-label>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+        </div>
+    </ion-list>
+  </div>
+</div>
+  <ion-fab bottom right *ngIf="bottomReached==0 && switchDataMore==1 && countOfPage!=1">
+   <button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow.gif" width="25px" height="25px"></button>
+ </ion-fab>
+</ion-content>
+<ion-footer [ngStyle]="{'display': showAllALLMaqolat}">
+<ion-toolbar>
+<div class="container">
+  <div id="firsArow">&nbsp;</div>
+  <div id="testRow" >
+    <div>
+    <marquee scrollamount="3" direction="{{ 'alignMsg' | translate }}" truespeed style="padding-top:6px">
+    	<span dir="{{ 'direction' | translate }}" style="color:#ffffff;font-size:15px">
+        	<span >{{forAllALLMaqolat}}</span>
+        </span>
+    </marquee>
+    </div>
+  </div>  
+  <div id="scoundArrow">&nbsp;</div>
+</div>
+</ion-toolbar>
+</ion-footer>
+

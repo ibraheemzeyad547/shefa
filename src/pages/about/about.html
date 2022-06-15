@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons right>
+		<button ion-button icon-only (click)="goBack()">
+          <ion-icon id="{{ 'id' | translate }}" ios="ios-arrow-{{ 'side' | translate }}" md="md-arrow-{{ 'side' | translate }}"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-title>{{ 'About' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<img src="assets/imgs/about.jpg">
+</ion-content>

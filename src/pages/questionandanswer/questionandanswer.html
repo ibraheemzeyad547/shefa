@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons right>
+	<button ion-button icon-only (click)="goBack()">
+          <ion-icon id="{{ 'id' | translate }}" ios="ios-arrow-{{ 'side' | translate }}" md="md-arrow-{{ 'side' | translate }}"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-title>{{ 'questionandanswer' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="action-sheets-basic-page">
+<div style="width:100%; padding-right:10px; padding-left:10px; padding-bottom:10px">
+	<button ion-button class="butoonAsk button" (click)="askquestionPage()">
+    <div id="{{ 'AskOneQuestionStyle' | translate }}"><img id="{{ 'id' | translate }}" src="assets/imgs/questionmark2.png" width="35px" height="35px" style="width:35px"><div style="margin-top:4px">&nbsp;&nbsp;{{ 'AskOneQuestion' | translate }}</div></div>
+    <div><ion-icon id="{{ 'idNew' | translate }}" ios="ios-arrow-{{ 'side' | translate }}" md="md-arrow-{{ 'side' | translate }}"></ion-icon></div>
+    </button>
+</div>
+<div *ngFor="let item of returnDataPage; let i = index">
+<ion-card >
+  <ion-item (click)="showAnswer(i,clickShowAnwer[i])">
+    <div class="styleText"><img id="{{ 'id' | translate }}" src="assets/imgs/questionmark.png" width="20px" height="25px" style="width:25px">
+    	<span style="padding-left:5px; padding-right:5px;white-space:normal;line-height: 15px;">{{item.question}}</span>
+        <div class="fromDay" *ngIf="item.isnew == 1" style="color:red">{{item.dateAdd}}</div>
+        <div class="fromDay" *ngIf="item.isnew != 1">{{item.dateAdd}}</div>
+    </div>
+  </ion-item>
+   <ion-item style="border-top:1px solid #185e85; background-color:#185e85;display:none" [@visibilityAnswer]="clickShowAnwer[i]">
+    <div class="styleTextAnswer"><span style="padding-left:5px; padding-right:5px;white-space:normal;line-height: 20px;">
+    {{item.answer}}
+    <br>
+    <div *ngIf="lang == 1" style="text-align:center">
+    كتبه
+    <br>
+    د. محمد بن يوسف الجوراني
+    </div>
+    <div *ngIf="lang == 2" style="text-align:center">
+    Written by
+    <br>
+    Dr. Mohammed bin Youssef Al-Jourani
+    </div>
+    </span></div>
+  </ion-item>
+</ion-card>
+</div>
+<div *ngIf="numberOfData==0" style="padding-left:10px; padding-right:10px; color:#185e85;font-size:18px; text-align:center">
+{{ 'msgeNoData' | translate }}
+</div>
+</ion-content>
+<ion-footer [ngStyle]="{'display': showAllALLMaqolat}">
+<ion-toolbar>
+<div class="container">
+  <div id="firsArow">&nbsp;</div>
+  <div id="testRow" >
+    <div>
+    <marquee scrollamount="3" direction="{{ 'alignMsg' | translate }}" truespeed style="padding-top:6px">
+    	<span dir="{{ 'direction' | translate }}" style="color:#ffffff;font-size:15px">
+        	<span >{{forAllALLMaqolat}}</span>
+        </span>
+    </marquee>
+    </div>
+  </div>  
+  <div id="scoundArrow">&nbsp;</div>
+</div>
+</ion-toolbar>
+</ion-footer>

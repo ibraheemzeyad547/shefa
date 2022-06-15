@@ -1,0 +1,8 @@
++ @ionic-native/file@4.20.0
+updated 1 package and audited 1357 packages in 6.808s
+
+46 packages are looking for funding
+  run `npm fund` for details
+
+found 144 vulnerabilities (3 low, 33 moderate, 88 high, 20 critical)
+  run `npm audit fix` to fix them, or `npm audit` for details

@@ -1,0 +1,289 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons right>
+		<button ion-button icon-only (click)="goBack()">
+          <ion-icon id="{{ 'id' | translate }}" ios="ios-arrow-{{ 'side' | translate }}" md="md-arrow-{{ 'side' | translate }}"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-title>{{ 'talkUs' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<form #myForm='ngForm' (ngSubmit)="talkusForm(myForm)">
+<div class="textDiv" style="text-align:justify; padding-bottom:10px">
+نرحب بنصحكم وملاحظاتكم وإقتراحاتكم النافعة شاكرين تعاونكم وحسن استجابتكم والله تعالى يسددنا واياكم لمرضاته
+</div>
+<div style="text-align:center; padding-bottom:5px">
+    <div align="{{ 'alignMsg' | translate }}" style="color:#bfbebe; font-size:15px; line-height:30px">{{ 'name' | translate }}</div>
+    <ion-input type="text" [(ngModel)]="name" name="name" (input)=checkName($event.target.value) class="{{nameError}} {{ 'direction' | translate }}"></ion-input>
+    <div *ngIf="nameError != ''"  align="{{ 'alignMsg' | translate }}" class="msgReturn">{{ 'msgName' | translate }}</div>
+</div>
+<div style="text-align:center; padding-bottom:5px">
+	<div align="{{ 'alignMsg' | translate }}" style="color:#bfbebe; font-size:15px; line-height:30px">{{ 'country' | translate }}</div>
+    <ion-select  [(ngModel)]="country" name="country" [ngStyle]="{ 'border-color' : countryError}" interface="popover" (ionChange)="checkCountry($event)" id="{{ 'selectalign' | translate }}">
+        <ion-option>سورية</ion-option>
+        <ion-option>عُمان</ion-option>
+        <ion-option>السعودية</ion-option>
+        <ion-option>الأردن</ion-option>
+        <ion-option>مصر</ion-option>
+        <ion-option>الكويت</ion-option>
+        <ion-option>الإمارات</ion-option>
+        <ion-option>البحرين</ion-option>
+        <ion-option>العراق</ion-option>
+        <ion-option>فلسطين</ion-option>
+        <ion-option>قطر</ion-option>
+        <ion-option>اليمن</ion-option>
+        <ion-option>الجزائر</ion-option>
+        <ion-option>ليبيا</ion-option>
+        <ion-option>المغرب</ion-option>
+        <ion-option>السودان </ion-option>
+        <ion-option>تونس</ion-option>
+        <ion-option>ايران</ion-option>
+        <ion-option>لبنان</ion-option>
+        <ion-option>مورتانيا </ion-option>
+        <ion-option>الصومال </ion-option>
+        <ion-option>جيبوتي</ion-option>
+        <ion-option>أنغولا </ion-option>
+        <ion-option>بنين</ion-option>
+        <ion-option>بوتسوانا</ion-option>
+        <ion-option>بوركينا فاسو</ion-option>
+        <ion-option>بوروندي</ion-option>
+        <ion-option>الكاميرون</ion-option>
+        <ion-option>الرأس الأخضر</ion-option>
+        <ion-option>جمهورية افريقيا الوسطى</ion-option>
+        <ion-option>تشاد</ion-option>
+        <ion-option>جزر القمر</ion-option>
+        <ion-option>جمهورية الكونغو الديمقراطية</ion-option>
+        <ion-option>جمهورية الكونغو</ion-option>
+        <ion-option>كوت ديفوار</ion-option>
+        <ion-option>غينيا الاستوائية</ion-option>
+        <ion-option>إريتريا</ion-option>
+        <ion-option>إثيوبيا</ion-option>
+        <ion-option>الغبون</ion-option>
+        <ion-option>غامبيا</ion-option>
+        <ion-option>غانا </ion-option>
+        <ion-option>غينيا</ion-option>
+        <ion-option>غينيا بيساو</ion-option>
+        <ion-option>كينا </ion-option>
+        <ion-option>ليسوتو</ion-option>
+        <ion-option>ليبرا </ion-option>
+        <ion-option>مدغشقر</ion-option>
+        <ion-option>ملاوي</ion-option>
+        <ion-option>مالي</ion-option>
+        <ion-option>موريشيوس</ion-option>
+        <ion-option>مايوت</ion-option>
+        <ion-option>موزامبيق</ion-option>
+        <ion-option>ناميبيا</ion-option>
+        <ion-option>النيجر</ion-option>
+        <ion-option>نيجيريا </ion-option>
+        <ion-option>ريونيون</ion-option>
+        <ion-option>رواندا</ion-option>
+        <ion-option>سانت هيلانة</ion-option>
+        <ion-option>جمهورية ساو تومي وبرينسيبي</ion-option>
+        <ion-option>السنغال </ion-option>
+        <ion-option>سيشل</ion-option>
+        <ion-option>سيراليون</ion-option>
+        <ion-option>جنوب افريقيا</ion-option>
+        <ion-option>سوازيلند</ion-option>
+        <ion-option>تنزانيا</ion-option>
+        <ion-option>توغو</ion-option>
+        <ion-option>أوغندا</ion-option>
+        <ion-option>زامبيا</ion-option>
+        <ion-option>زيمبابوي</ion-option>
+        <ion-option>أفغانستان</ion-option>
+        <ion-option>أرمينيا</ion-option>
+        <ion-option>أذربيجان</ion-option>
+        <ion-option>بنغلاديش</ion-option>
+        <ion-option>بوتان </ion-option>
+        <ion-option>بروناي</ion-option>
+        <ion-option>كمبوديا</ion-option>
+        <ion-option>جمهورية الصين</ion-option>
+        <ion-option>هونج كونج</ion-option>
+        <ion-option>ماكاو</ion-option>
+        <ion-option>جمهورية قبرص</ion-option>
+        <ion-option>الجمهورية التركية لشمال قبرص</ion-option>
+        <ion-option>جمهورية التشيك</ion-option>
+        <ion-option>تيمور الشرقية</ion-option>
+        <ion-option>جورجيا</ion-option>
+        <ion-option>الهند</ion-option>
+        <ion-option>أندونسيا </ion-option>
+        <ion-option>اليابان</ion-option>
+        <ion-option>كازاخستان</ion-option>
+        <ion-option>كوريا الشمالية</ion-option>
+        <ion-option>كوريا الجنوبية</ion-option>
+        <ion-option>قرغيزستان</ion-option>
+        <ion-option>لاوس</ion-option>
+        <ion-option>ماليزيا</ion-option>
+        <ion-option>جزر المالديف</ion-option>
+        <ion-option>منغوليا</ion-option>
+        <ion-option>ميانمار</ion-option>
+        <ion-option>نيبال</ion-option>
+        <ion-option>باكستان</ion-option>
+        <ion-option>الأراضي الفلسطينية</ion-option>
+        <ion-option>الفلبين</ion-option>
+        <ion-option>روسيا </ion-option>
+        <ion-option>جمهورية سنغافورة</ion-option>
+        <ion-option>سري لانكا</ion-option>
+        <ion-option>جمهورية الصين تايوان</ion-option>
+        <ion-option>طاجيكستان</ion-option>
+        <ion-option>تايلاند</ion-option>
+        <ion-option>تركمانستان</ion-option>
+        <ion-option>تركيا</ion-option>
+        <ion-option>أوزبكستان</ion-option>
+        <ion-option>فيتنام</ion-option>
+        <ion-option>الدنمارك </ion-option>
+        <ion-option>إستونيا</ion-option>
+        <ion-option>فنلندا البلديات الكبرى</ion-option>
+        <ion-option>جزر الفارو</ion-option>
+        <ion-option>فرنسا</ion-option>
+        <ion-option>ألمانيا</ion-option>
+        <ion-option>جبل طارق</ion-option>
+        <ion-option>بريطانيا العظمى</ion-option>
+        <ion-option>انكلترا</ion-option>
+        <ion-option>ايرلندا الشمالية</ion-option>
+        <ion-option>اسكتلندا</ion-option>
+        <ion-option>ويلز</ion-option>
+        <ion-option>اليونان</ion-option>
+        <ion-option>غيرنسي</ion-option>
+        <ion-option>المجر</ion-option>
+        <ion-option>أيسلندا</ion-option>
+        <ion-option>إيرلندا</ion-option>
+        <ion-option>إيطاليا</ion-option>
+        <ion-option>نتس</ion-option>
+        <ion-option>كوسوفو</ion-option>
+        <ion-option>لاتفيا</ion-option>
+        <ion-option>ليختنشتاين</ion-option>
+        <ion-option>ليتوانيا</ion-option>
+        <ion-option>لوكسمبورج</ion-option>
+        <ion-option>مقدونيا</ion-option>
+        <ion-option>مالطا</ion-option>
+        <ion-option>جزيرة مان</ion-option>
+        <ion-option>مولدوفا</ion-option>
+        <ion-option>موناكو</ion-option>
+        <ion-option>الجبل الأسود</ion-option>
+        <ion-option>هولندا</ion-option>
+        <ion-option>بولندا</ion-option>
+        <ion-option>البرتغال</ion-option>
+        <ion-option>رومانيا</ion-option>
+        <ion-option>النرويج</ion-option>
+        <ion-option>سان مارينو</ion-option>
+        <ion-option>صربيا</ion-option>
+        <ion-option>سلوفاكيا</ion-option>
+        <ion-option>سلوفينيا</ion-option>
+        <ion-option>إسبانيا</ion-option>
+        <ion-option>السويد</ion-option>
+        <ion-option>سويسرا</ion-option>
+        <ion-option>أوكرانيا</ion-option>
+        <ion-option>مدينة الفاتيكان</ion-option>
+        <ion-option>ألبانيا</ion-option>
+        <ion-option>أندورا</ion-option>
+        <ion-option>النمسا</ion-option>
+        <ion-option>روسيا البيضاء</ion-option>
+        <ion-option>بلجيكا</ion-option>
+        <ion-option>البوسنة والهرسك</ion-option>
+        <ion-option>بلغاريا</ion-option>
+        <ion-option>كرواتيا</ion-option>
+        <ion-option>ساموا الأمريكية.</ion-option>
+        <ion-option>أنتاركتيكا</ion-option>
+        <ion-option>استراليا</ion-option>
+        <ion-option>جزيرة كريسماس</ion-option>
+        <ion-option>جزر كوك</ion-option>
+        <ion-option>فيجي</ion-option>
+        <ion-option>بولينيزيا الفرنسية</ion-option>
+        <ion-option>غوام</ion-option>
+        <ion-option>كيريباس</ion-option>
+        <ion-option>جزر مارشال</ion-option>
+        <ion-option>ميكرونيزيا</ion-option>
+        <ion-option>ناورو</ion-option>
+        <ion-option>كاليدونيا الجديدة</ion-option>
+        <ion-option>نيوزيلندا</ion-option>
+        <ion-option>نيوي</ion-option>
+        <ion-option>جزر ماريانا الشمالية</ion-option>
+        <ion-option>بالاو</ion-option>
+        <ion-option>بابوا غينيا الجديدة</ion-option>
+        <ion-option>بيتكيرن</ion-option>
+        <ion-option>ساموا</ion-option>
+        <ion-option>جزر سليمان</ion-option>
+        <ion-option>توكيلاو</ion-option>
+        <ion-option>تونغا</ion-option>
+        <ion-option>توفالو</ion-option>
+        <ion-option>فانواتو</ion-option>
+        <ion-option>واليس وفوتونا</ion-option>
+        <ion-option>أنغيلا</ion-option>
+        <ion-option>أنتيغوا وبربودا</ion-option>
+        <ion-option>الأرجنتين</ion-option>
+        <ion-option>أروبا</ion-option>
+        <ion-option>جزر البهاما</ion-option>
+        <ion-option>بربادوس</ion-option>
+        <ion-option>بليز</ion-option>
+        <ion-option>برمودا</ion-option>
+        <ion-option>بوليفيا</ion-option>
+        <ion-option>البرازيل</ion-option>
+        <ion-option>جزر فيرجن البريطانية</ion-option>
+        <ion-option>كندا</ion-option>
+        <ion-option>منطقة البحر الكاريبي هولندا</ion-option>
+        <ion-option>جزر كايمان</ion-option>
+        <ion-option>تشيلي</ion-option>
+        <ion-option>كولومبيا</ion-option>
+        <ion-option>كوبا</ion-option>
+        <ion-option>كوستاريكا</ion-option>
+        <ion-option>كوراساو</ion-option>
+        <ion-option>دومينيكا</ion-option>
+        <ion-option>جمهورية الدومينيكان</ion-option>
+        <ion-option>الاكوادور</ion-option>
+        <ion-option>السلفادور</ion-option>
+        <ion-option>جزر فوكلاند</ion-option>
+        <ion-option>غيانا الفرنسية</ion-option>
+        <ion-option>جرينلاند</ion-option>
+        <ion-option>جرينادا</ion-option>
+        <ion-option>غيانا</ion-option>
+        <ion-option>جواتيمالا</ion-option>
+        <ion-option>هايتي</ion-option>
+        <ion-option>غواديلوب</ion-option>
+        <ion-option>هندوراس</ion-option>
+        <ion-option>جامايكا</ion-option>
+        <ion-option>مارتينيك</ion-option>
+        <ion-option>مكسيكو</ion-option>
+        <ion-option>مونتسيرات</ion-option>
+        <ion-option>نيكاراغوا</ion-option>
+        <ion-option>بنما</ion-option>
+        <ion-option>باراغواي</ion-option>
+        <ion-option>بيرو</ion-option>
+        <ion-option>بورتو ريكو</ion-option>
+        <ion-option>سان بارتيليمي</ion-option>
+        <ion-option>شارع. كيتس ونيفيس</ion-option>
+        <ion-option>سانت لوسيا</ion-option>
+        <ion-option>سان مارتن</ion-option>
+        <ion-option>سان بيار وميكلون</ion-option>
+        <ion-option>سانت فنسنت وغرينادين</ion-option>
+        <ion-option>سينت مارتن</ion-option>
+        <ion-option>سورينام</ion-option>
+        <ion-option>ترينيداد وتوباغو</ion-option>
+        <ion-option>جزر تركس وكايكوس</ion-option>
+        <ion-option>الولايات المتحدة الأمريكية</ion-option>
+        <ion-option>أوروغواي</ion-option>
+        <ion-option>فنزويلا</ion-option>
+        <ion-option>جزر فرجن التابعة للولايات المتحدة</ion-option>
+  </ion-select>
+  	<div *ngIf="countryError != '#dadada'" align="{{ 'alignMsg' | translate }}" class="msgReturn">{{ 'msgCuntry' | translate }}</div>
+</div>
+<div style="text-align:center; padding-bottom:5px">
+	<div align="{{ 'alignMsg' | translate }}" style="color:#bfbebe; font-size:15px; line-height:30px">{{ 'email' | translate }}</div>
+	 <ion-input type="text" [(ngModel)]="email" name="email" (input)=checkEmail($event.target.value) class="{{emailError}} {{emailCheckError}} {{ 'direction' | translate }}"></ion-input>
+     <div *ngIf="emailError != ''"  align="{{ 'alignMsg' | translate }}" class="msgReturn">{{ 'msgEmail' | translate }}</div>
+     <div *ngIf="emailCheckError != ''" align="{{ 'alignMsg' | translate }}" class="msgReturn">{{ 'msgErrorEmail' | translate }}</div>
+</div>
+<div style="text-align:center; padding-bottom:5px">
+	<div align="{{ 'alignMsg' | translate }}" style="color:#bfbebe; font-size:15px; line-height:30px">{{ 'msg' | translate }}</div>
+	 <ion-textarea rows="5" [(ngModel)]="message" name="message" (input)=checkMessge($event.target.value) class="{{msgError}} {{ 'direction' | translate }}"></ion-textarea>
+     <div *ngIf="msgError != ''" align="{{ 'alignMsg' | translate }}" class="msgReturn">{{ 'msgMessage' | translate }}</div>
+</div>
+<div style="text-align:center">
+	 <button class="submit" id="submit" ion-button type="submit" block [disabled]="!isdisabled">{{ 'send' | translate }}</button>
+</div>
+</form>
+</ion-content>

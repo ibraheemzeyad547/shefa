@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons right>
+	<button ion-button icon-only (click)="goBack()">
+          <ion-icon id="{{ 'id' | translate }}" ios="ios-arrow-{{ 'side' | translate }}" md="md-arrow-{{ 'side' | translate }}"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-title>{{ 'MostListened' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="action-sheets-basic-page">
+<ion-scroll scrollY="true" #scrollWeb>
+<div *ngFor="let item of returnDataWatchList">
+<ion-card>
+  <ion-item>
+    <div class="styleText">
+     <ion-row>
+	<ion-col col-2 style="background-color:#185e85;"> 
+        <div style="text-align: -webkit-center;padding: 12px;padding-top: 17px;"><img src="assets/imgs/mice.png" style="width:20px; height:20px"></div>
+	</ion-col>
+    	<ion-col col-8><div style="overflow: hidden;width: 100%;text-overflow: ellipsis;padding: 18px;padding-top: 20px;">{{item.pageName}}</div></ion-col>
+        <ion-col col-2>
+        	<div style="padding-top:10px; padding-left:3px; padding-right:3px">
+                <ion-row>
+                    <ion-col col-6> 
+                        <div style="padding-top: 4px;">
+                            <img src="assets/imgs/play.png" style="width:30px; height:30px" *ngIf="lang==1 && !is_playing[item.num]" (click)="playRecording(item.num)">
+                            <img src="assets/imgs/playEn.png" style="width:30px; height:30px" *ngIf="lang==2 && !is_playing[item.num]" (click)="playRecording(item.num)">
+                            <img src="assets/imgs/puse.png" style="width:25px; height:25px" *ngIf="is_playing[item.num]" (click)="pausePlayRecording()">
+                        </div>
+                    </ion-col>
+                    <ion-col col-6> 
+                        <div style="padding-top: 4px;text-align:center" (click)="repeatAudio(repeatNumber[item.num],item.num)"><img src="assets/imgs/repetad3.png" style="width:30px; height:30px"><span class="repetedSpan" *ngIf="repeatNumber[item.num] >= 1">{{repeatNumber[item.num]}}</span></div>
+                    </ion-col>
+                </ion-row>
+            </div>
+		</ion-col>
+    </ion-row>
+    </div>
+</ion-item>
+</ion-card>
+</div>
+<div *ngIf="numberOfData==0" style="padding-left:10px; padding-right:10px; color:#185e85;font-size:18px; text-align:center">
+{{ 'msgeNoData' | translate }}
+</div>
+</ion-scroll>
+</ion-content>
+<ion-footer style="background-color:#185e85">
+<ion-toolbar style="margin-top: 0px;">
+	<div>
+        <ion-grid style="direction:ltr">
+            <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%; padding:0px">
+             <ion-col style="text-align:center;color:#FFFFFF;padding-top:25px;"><ion-label range-right class="rangeOne">{{ position[redingType]*1001 | date:'HH:mm:ss':'UTC' }}</ion-label></ion-col>
+                <ion-col style="text-align:center; padding:0px">
+                    <button ion-button icon-only (click)="playRecording('b')">
+                        <img src="assets/imgs/06Button.png" width="25px" height="25px">
+                    </button>
+                </ion-col>
+                <ion-col style="text-align:center;">
+                    <button ion-button icon-only (click)="playRecording('a')" *ngIf="!is_playing[redingType]">
+                        <img src="assets/imgs/05Button.png" width="40px" height="40px">
+                    </button>
+                    <button ion-button icon-only (click)="pausePlayRecording()" *ngIf="is_playing[redingType]">
+                        <img src="assets/imgs/04Button.png" width="40px" height="40px">
+                    </button>
+                </ion-col>
+                <ion-col style="text-align:center; padding:0px">
+                    <button ion-button icon-only (click)="playRecording('n')">
+                        <img src="assets/imgs/07Button.png" width="25px" height="25px">
+                    </button>
+                </ion-col>
+                <ion-col style="text-align:center;color:#FFFFFF;padding-top:25px;">
+                    <ion-label range-left *ngIf="duration[redingType] == -1" class="rangeTow">00:00:00</ion-label>
+                    <ion-label range-left *ngIf="duration[redingType] != -1" class="rangeTow">{{ duration[redingType]*1000 | date:'HH:mm:ss':'UTC' }}</ion-label>
+                </ion-col>
+            </ion-row>
+             <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%; padding:0px">
+             <ion-col style="text-align:center;color:#FFFFFF; padding:0px">
+               <ion-range min="0" max="{{duration[redingType]}}" [(ngModel)]="position[redingType]" ></ion-range>
+             </ion-col>
+            </ion-row>
+        </ion-grid>
+        </div>
+</ion-toolbar>
+</ion-footer>

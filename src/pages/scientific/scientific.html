@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-buttons left *ngIf="imageType == 0">
+        <button ion-button icon-only (click)="saveBookMark()">
+           <ion-icon ios="ios-star-outline" md="md-star-outline"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-buttons left *ngIf="imageType == 1">
+    <button ion-button icon-only (click)="removeBookMark()">
+        <ion-icon ios="ios-star" md="md-star"></ion-icon>
+    </button>
+  </ion-buttons>
+    <ion-buttons right>
+	<button ion-button icon-only (click)="goBack()">
+          <ion-icon id="{{ 'id' | translate }}" ios="ios-arrow-{{ 'side' | translate }}" md="md-arrow-{{ 'side' | translate }}"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-title>{{pageNameTra}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="action-sheets-basic-page" (ionScroll)="detectBottom()">
+ <ion-item>
+   <div style="text-align:center;">
+   	<div *ngFor="let item of numperOFimage">
+    	<img src="{{item}}">
+    </div>
+      </div>
+    </ion-item>
+    <div *ngIf="bottomReached==0" style="position: sticky;bottom: 11px;z-index: 100000000;">
+   <button   style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow.gif" width="25px" height="25px"></button>
+ </div>
+</ion-content>
+<ion-footer [ngStyle]="{'display': showAllALLMaqolat}">
+<ion-toolbar>
+<div class="container">
+  <div id="firsArow">&nbsp;</div>
+  <div id="testRow" >
+    <div>
+    <marquee scrollamount="3" direction="{{ 'alignMsg' | translate }}" truespeed style="padding-top:6px">
+    	<span dir="{{ 'direction' | translate }}" style="color:#ffffff;font-size:15px">
+        	<span >{{forAllALLMaqolat}}</span>
+        </span>
+    </marquee>
+    </div>
+  </div>  
+  <div id="scoundArrow">&nbsp;</div>
+</div>
+</ion-toolbar>
+</ion-footer>

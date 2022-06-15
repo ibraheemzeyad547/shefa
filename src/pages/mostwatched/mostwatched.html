@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons right>
+	<button ion-button icon-only (click)="goBack()">
+          <ion-icon id="{{ 'id' | translate }}" ios="ios-arrow-{{ 'side' | translate }}" md="md-arrow-{{ 'side' | translate }}"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-title>{{ 'MostWatched' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="action-sheets-basic-page">
+<ion-scroll scrollY="true" #scrollWeb>
+<div *ngFor="let item of returnDataWatchList">
+<ion-card>
+  <ion-item>
+    <div class="styleText" (click)="goToPage(item.pageNumber)">
+    <ion-row>
+	<ion-col col-11> 
+        <div style="overflow: hidden;width: 100%;text-overflow: ellipsis;">{{item.pageNameInApp}}</div>
+	</ion-col>
+    	<ion-col col-1><ion-icon id="{{ 'id' | translate }}" ios="ios-arrow-{{ 'side' | translate }}" md="md-arrow-{{ 'side' | translate }}" style="padding-top: 7px;color: #c9c9c9;padding-bottom: 5px;"></ion-icon></ion-col>
+    </ion-row>
+    </div>
+  </ion-item>
+</ion-card>
+</div>
+<div *ngIf="numberOfData==0" style="padding-left:10px; padding-right:10px; color:#185e85;font-size:18px; text-align:center">
+{{ 'msgeNoData' | translate }}
+</div>
+</ion-scroll>
+</ion-content>
+<ion-footer [ngStyle]="{'display': showAllALLMaqolat}">
+<ion-toolbar>
+<div class="container">
+  <div id="firsArow">&nbsp;</div>
+  <div id="testRow" >
+    <div>
+    <marquee scrollamount="3" direction="{{ 'alignMsg' | translate }}" truespeed style="padding-top:6px">
+    	<span dir="{{ 'direction' | translate }}" style="color:#ffffff;font-size:15px">
+        	<span >{{forAllALLMaqolat}}</span>
+        </span>
+    </marquee>
+    </div>
+  </div>  
+  <div id="scoundArrow">&nbsp;</div>
+</div>
+</ion-toolbar>
+</ion-footer>

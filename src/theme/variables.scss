@@ -1,0 +1,234 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
+$font-path: "../assets/fonts";
+@font-face {
+	font-family: 'harf-fannan';
+    font-weight: normal;
+    font-style: normal;
+	src:url('../assets/fonts/harf-fannan.ttf');
+}
+// The app direction is used to include
+// rtl styles in your app. For more info, please see:
+// http://ionicframework.com/docs/theming/rtl-support/
+* {
+	font-family: 'harf-fannan';
+}
+$app-direction: rtl;
+$menu-width: 270px;
+$fab-content-margin:5px;
+$loading-ios-background:#185e85;
+$loading-ios-text-color:#ffffff;
+$loading-md-background:#185e85;
+$loading-md-text-color:#ffffff;
+$loading-md-spinner-circles-color:#ffffff;
+$loading-ios-spinner-circles-color:#ffffff;
+$loading-ios-spinner-color:#ffffff;
+$loading-md-spinner-color:#ffffff;
+$loading-ios-padding-top:20px;
+$loading-ios-padding-end:22px;
+$loading-md-padding-top:20px;
+$loading-md-padding-end:22px;
+$loading-ios-border-radius:5px;
+$loading-md-border-radius:5px;
+@import "ionic.globals";
+
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+
+
+
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$colors: (
+  primary:    #488aff,
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222
+);
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+
+
+
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+
+
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+
+
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/ionicons/
+
+@import "ionic.ionicons";
+
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";
+.item-ios .radio-ios{
+	margin:0px !important
+}
+.item-md .radio-md{
+	margin:0px !important
+}
+.item-block{
+	min-height:0px !important
+}
+.action-sheet-ios .action-sheet-cancel{
+	display:none
+}
+.action-sheet-md .action-sheet-cancel{
+	display:none
+}
+.action-sheet-ios .action-sheet-button{
+	padding:0px !important;
+	min-height: 4.6rem !important;
+	border-bottom:0 !important;
+	border-bottom: 0.55px solid #8f9093 !important;
+	color:#1d74a5 !important;
+	white-space:nowrap!important;
+	font-size:17px!important;
+}
+.action-sheet-md .action-sheet-button{
+	padding:0px !important;
+	min-height: 4.6rem !important;
+	border-bottom:0 !important;
+	border-bottom: 0.55px solid #8f9093 !important;
+	color:#1d74a5 !important;
+	white-space:nowrap!important;
+	font-size:17px!important;
+}
+.action-sheet-ios .action-sheet-group{
+	border-radius:5px !important;
+}
+.action-sheet-md .action-sheet-button{
+	padding:0px !important;
+	min-height: 4.6rem !important;
+	color:#1d74a5 !important
+}
+.action-sheet-md .action-sheet-group{
+	border-radius:5px;
+}
+.action-sheet-md .action-sheet-group:last-child{
+	padding-bottom: 5.8rem !important;
+	background:none !important;
+}
+.action-sheet-ios .action-sheet-group:last-child{
+	padding-bottom: 4.8rem !important;
+	background:none !important;
+	border-bottom:0px !important;
+}
+.action-sheet-md .action-sheet-group:first-child{
+	overflow:hidden !important;
+	padding-top: 0px !important;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.action-sheet-ios .action-sheet-group:first-child{
+	overflow:hidden !important;
+}
+.action-sheet-ios .action-sheet-button:last-child{
+	border-bottom:0px !important;
+}
+.action-sheet-md .action-sheet-button:last-child{
+	border-bottom:0px !important;
+}
+.action-sheet-md .action-sheet-group .button-inner{
+	justify-content:center !important;
+	font-size: 2rem !important;
+}
+.toast-md .toast-message {
+		font-size: 16px !important;
+		text-align: center !important;
+		padding-bottom:20px!important;
+	}
+	.toast-md .toast-wrapper {
+		background: #1f7fb6 !important;
+	}
+	.toast-ios .toast-message {
+		font-size: 16px !important;
+		text-align: center !important;
+		padding-bottom:20px!important;
+	}
+	.toast-ios .toast-wrapper {
+		background: #185e85 !important;
+	}
+	.loading-content{
+		line-height:20px;
+	}
+.picker-ios .picker-button, .picker-ios .picker-button.activated{
+		color:#185e85!important;
+		font-size:18px!important;
+	}
+	.picker-ios .picker-toolbar-button:last-child .picker-button{
+		font-weight:normal!important;
+	}
+	.picker-md  .picker-button, .picker-md  .picker-button.activated{
+		color:#185e85!important;
+		font-size:18px!important;
+	}
+	.picker-md .picker-toolbar-button:last-child .picker-button{
+		font-weight:normal!important;
+	}
+	.picker-ios .picker-opt{
+		color:#185e85 !important;
+		font-size:22px !important;
+		font-weight:bold;
+	}
+	.datetime-ios {
+     padding: 5px 0px 9px 3px !important; 
+    font-size: 21px !important;
+}
+.datetime-md {
+     padding: 5px 0px 9px 3px !important; 
+    font-size: 21px !important;
+}
+.list-ios .item-block .item-inner{
+	color::#185e85;
+	line-height:25px
+}
+.list-md .item-block .item-inner{
+	color::#185e85;
+	line-height:25px
+}

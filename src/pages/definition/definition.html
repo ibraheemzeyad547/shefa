@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons right>
+	<button ion-button icon-only (click)="goBack()">
+          <ion-icon id="{{ 'id' | translate }}" ios="ios-arrow-{{ 'side' | translate }}" md="md-arrow-{{ 'side' | translate }}"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-title>{{ 'Definition' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<div *ngIf="lang==1">
+    <div class="textDiv">
+        هذا تطبيقٌ نافعٌ ناجعٌ بإذن الله تعالى، يُستعان به بعد الله سبحانه و تعالى في الشفاء والعافية وحُسْن الحال لِمَن نزلَ به عارضُ <span style="color:#1d74a5">مرضٍ عُضْويٍّ جسديٍّ </span>، خاصة ممَّا لم يَعْرف الأطباءُ إلى علاجه سبيلاً.
+    </div>
+    <div class="textDiv">
+        <span style="color:#1d74a5">أو نفسيٍّ</span>؛ مِن غمٍّ أوهمٍّ أو حُزْن وكآبة.
+        <br>
+        <span style="color:#1d74a5">أو رُوحيٍّ</span>؛ مِن مسٍّ أو سِحْرٍ أو عينٍ وحسد.
+    </div>
+    <div class="textDiv">
+    فهذه الرُّقية الشرعيَّة المُتميِّزة شافيةٌ بإذن الله  سبحانه و تعالى؛ إذ فيها مُداوةٌ للنُّفوسِ والأبدان، ودافعةٌ عنها  الغُمُوم والهُمُوم والأحزان
+     ورافعةٌ للأمراض والإصابات ثُمَّ هي مزرعةٌ للإبتساماتِ، وخيرُ معينٍ في زمن الإبتلاءات.
+    </div>
+    <div class="textDiv">
+    حَفِظ الله المسلمين والمسلمات مِن أذى شياطين الإنس والجنِّ وصانهم من كلِّ سُوء.
+    </div>
+</div>
+
+<div *ngIf="lang==2">
+    <div class="textDiv">
+        This application is useful and beneficial by Allah (SWT). It is used -after depending solely on Allah (SWT)- in healing, wellness and maintaining well-being; by those who were affected by an organic-physical disease, and/or those who carry disease to which doctors did not find any possible way to cure.
+    </div>
+    <div class="textDiv">
+       This distinguished, curing Ruqya -by Allah’s (SWT)- heals the souls and bodies from worries, pains and sorrows. It heals from diseases and injuries, then draws smiles consequently. It provides, indeed, an aide in times of hardship and affliction. 
+    </div>
+    <div class="textDiv">
+   	May Allah (SWT) protect our Muslim brothers and sisters from the harm of Jinn and man’s demons.
+    </div>
+    
+</div>
+
+</ion-content>

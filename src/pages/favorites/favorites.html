@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons right>
+	<button ion-button icon-only (click)="goBack()">
+          <ion-icon id="{{ 'id' | translate }}" ios="ios-arrow-{{ 'side' | translate }}" md="md-arrow-{{ 'side' | translate }}"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-title>{{ 'Favorites' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="action-sheets-basic-page">
+<div *ngFor="let item of allpages; let i = index">
+<ion-card *ngIf="pageName[i]==1">
+  <ion-item>
+    <div class="styleText"><span (click) = "goToPage(item[1])">{{item[0]}}</span><img id="{{ 'id' | translate }}" src="assets/imgs/star.png" width="20px" height="20px" style="width:20px" (click)="removeBookMark(item[1],i)"></div>
+  </ion-item>
+</ion-card>
+</div>
+</ion-content>
+<ion-footer [ngStyle]="{'display': showAllALLMaqolat}">
+<ion-toolbar>
+<div class="container">
+  <div id="firsArow">&nbsp;</div>
+  <div id="testRow" >
+    <div>
+    <marquee scrollamount="3" direction="{{ 'alignMsg' | translate }}" truespeed style="padding-top:6px">
+    	<span dir="{{ 'direction' | translate }}" style="color:#ffffff;font-size:15px">
+        	<span >{{forAllALLMaqolat}}</span>
+        </span>
+    </marquee>
+    </div>
+  </div>  
+  <div id="scoundArrow">&nbsp;</div>
+</div>
+</ion-toolbar>
+</ion-footer>

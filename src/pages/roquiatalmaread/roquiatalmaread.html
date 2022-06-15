@@ -1,0 +1,137 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons left *ngIf="switchDataMore==1 && imageType == 0">
+        <button ion-button icon-only (click)="saveBookMark()">
+           <ion-icon ios="ios-star-outline" md="md-star-outline"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-buttons left *ngIf="switchDataMore==1 && imageType == 1">
+    <button ion-button icon-only (click)="removeBookMark()">
+        <ion-icon ios="ios-star" md="md-star"></ion-icon>
+    </button>
+  </ion-buttons>
+    <ion-buttons left *ngIf="switchDataMore==0 && imageSoundTypeOne == 0">
+    <button ion-button icon-only (click)="saveBookSoundMark()">
+        <ion-icon ios="ios-add" md="md-add" style="font-size:2.5em"></ion-icon>
+    </button>
+  </ion-buttons>
+    <ion-buttons right>
+	<button ion-button icon-only (click)="goBack()">
+          <ion-icon id="{{ 'id' | translate }}" ios="ios-arrow-{{ 'side' | translate }}" md="md-arrow-{{ 'side' | translate }}"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-title>{{ 'roquiatalmaread' | translate }}</ion-title>
+  </ion-navbar>
+  
+  <ion-segment [(ngModel)]="selectSegment">
+      <ion-segment-button value="reading" (click) = "changeBckColor(1)" *ngIf="showReadOrWrite">
+        {{ 'reading' | translate }}
+      </ion-segment-button>
+      <ion-segment-button value="listening" (click) = "changeBckColor(0)">
+        {{ 'listening' | translate }}
+      </ion-segment-button>
+    </ion-segment>
+    
+</ion-header>
+<ion-content class="{{changeColor}}" (ionScroll)="detectBottom()" >
+   <div [ngSwitch]="selectSegment">
+    <ion-list *ngSwitchCase="'listening'" style="background-color:#ffffff">
+    	<div *ngIf="changeSound==1" style="padding-right: 15px;padding-left: 15px;">
+            <div style="position:relative; top:15px">
+            <ion-grid style="direction:ltr">
+                <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+                    <ion-col style="text-align:center">
+                        <button ion-button icon-only (click)="controlSeconds('back')" >
+                            <img src="assets/imgs/12.png" width="50px" height="50px">
+                        </button>
+                    </ion-col>
+                    <ion-col style="text-align:center">
+                        <button ion-button icon-only (click)="playRecording()" *ngIf="!is_playing[redingType]">
+                            <img src="assets/imgs/10.png" width="50px" height="50px">
+                        </button>
+                        <button ion-button icon-only (click)="pausePlayRecording()" *ngIf="is_playing[redingType]">
+                            <img src="assets/imgs/111.png" width="50px" height="50px">
+                        </button>
+                    </ion-col>
+                    <ion-col style="text-align:center">
+                        <button ion-button icon-only (click)="controlSeconds('forward')">
+                            <img src="assets/imgs/11.png" width="50px" height="50px">
+                        </button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+            </div>
+             <div style="position:relative">
+              <ion-range min="0" max="{{duration[redingType]}}" [(ngModel)]="position[redingType]" ></ion-range>
+            </div>
+            <div>
+                <ion-grid style="direction:ltr">
+                    <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+                        <ion-col style="text-align:center">
+                        	<ion-label range-right class="rangeOne">{{ position[redingType]*1000 | date:'HH:mm:ss':'UTC' }}</ion-label>
+                        </ion-col>
+                        <ion-col style="text-align:center"> 
+                        <div style="padding-bottom:3px"><img src="assets/imgs/increesRepet.png" width="30px" height="30px" (click)="repeatAudio(repeatNumber,1)"></div>
+                        <div>
+                        	<div class="repeted" dir="{{ 'directionTow' | translate }}" style="padding: 7px;width: 100px;text-align: center;margin: 8px auto;">
+                        		<span>{{ 'repeat' | translate }}</span> <span style="vertical-align:middle"><img src="assets/imgs/repetad.png" width="15px" height="15px"></span> <span class="repetedSpan" *ngIf="repeatNumber >= 1">{{repeatNumber}}</span>
+                        	</div>
+                        </div>
+                         <div style="padding-top:3px"><img src="assets/imgs/repetRemove.png" width="30px" height="30px" (click)="repeatAudio(repeatNumber,2)"></div>
+                        <ion-icon style="color:#185e85; font-size:25px" name="arrow-round-down" (click)="downloadeRecordingIos(redingType)" *ngIf="typeDevice==1"></ion-icon>
+                        <ion-icon style="color:#185e85; font-size:25px" name="arrow-round-down" (click)="downloadeRecordingAndroid(redingType)" *ngIf="typeDevice==2"></ion-icon>
+                        </ion-col>
+                        <ion-col style="text-align:center">
+                            <ion-label range-left *ngIf="duration[redingType] == -1" class="rangeTow">00:00:00</ion-label>
+                            <ion-label range-left *ngIf="duration[redingType] != -1" class="rangeTow">{{ duration[redingType]*1000 | date:'HH:mm:ss':'UTC' }}</ion-label>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+        </div>
+        
+    </ion-list>
+    <ion-list *ngSwitchCase="'reading'" >
+   <div style="text-align:center;">
+          <img src="assets/imgs/roquiatalmaread/roquiatalmaread_1.jpg"><br>
+          <img src="assets/imgs/roquiatalmaread/roquiatalmaread_2.jpg"><br>
+          <img src="assets/imgs/roquiatalmaread/roquiatalmaread_3.jpg"><br>
+          <img src="assets/imgs/roquiatalmaread/roquiatalmaread_4.jpg"><br>
+          <img src="assets/imgs/roquiatalmaread/roquiatalmaread_5.jpg"><br>
+          <img src="assets/imgs/roquiatalmaread/roquiatalmaread_6.jpg"><br>
+          <img src="assets/imgs/roquiatalmaread/roquiatalmaread_7.jpg"><br>
+          <img src="assets/imgs/roquiatalmaread/roquiatalmaread_8.jpg"><br>
+          <img src="assets/imgs/roquiatalmaread/roquiatalmaread_9.jpg"><br>
+          <img src="assets/imgs/roquiatalmaread/roquiatalmaread_10.jpg"><br>
+          <img src="assets/imgs/roquiatalmaread/roquiatalmaread_11.jpg"><br>
+          <img src="assets/imgs/roquiatalmaread/roquiatalmaread_12.jpg"><br>
+          <img src="assets/imgs/roquiatalmaread/roquiatalmaread_13.jpg"><br>
+          <img src="assets/imgs/roquiatalmaread/roquiatalmaread_14.jpg"><br>
+          <img src="assets/imgs/roquiatalmaread/roquiatalmaread_15.jpg"><br>
+      </div>
+    </ion-list>
+  </div>
+  <ion-fab bottom right *ngIf="bottomReached==0 && switchDataMore==1 && countOfPage!=1">
+   <button ion-fab style="background-color:transparent;border:0px;width: 43px;height: 32px;box-shadow: none;"><img id="arrowImage" src="assets/imgs/arrow.gif" width="25px" height="25px"></button>
+   </ion-fab>
+</ion-content>
+<ion-footer [ngStyle]="{'display': showAllALLMaqolat}">
+<ion-toolbar>
+<div class="container">
+  <div id="firsArow">&nbsp;</div>
+  <div id="testRow" >
+    <div>
+    <marquee scrollamount="3" direction="{{ 'alignMsg' | translate }}" truespeed style="padding-top:6px">
+    	<span dir="{{ 'direction' | translate }}" style="color:#ffffff;font-size:15px">
+        	<span >{{forAllALLMaqolat}}</span>
+        </span>
+    </marquee>
+    </div>
+  </div>  
+  <div id="scoundArrow">&nbsp;</div>
+</div>
+</ion-toolbar>
+</ion-footer>

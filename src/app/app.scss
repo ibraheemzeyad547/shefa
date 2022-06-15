@@ -1,0 +1,155 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+#scrollMenu .scroll-content{
+	margin-top:150px !important;
+	margin-bottom:35px;
+}
+
+#scrollMenuHeader > .toolbar-ios ion-title{
+	margin-top: 65px !important;
+    padding: 0px 40px 1px;
+}
+#scrollMenuHeader > .toolbar-md ion-title{
+	margin-top: 20px !important;
+	padding: 0 24px 1px;
+}
+
+#scrollMenuHeader .toolbar{
+	height:150px;
+} 
+.classButton.item-md{
+	padding-right:0px;
+}
+.classButton.item-ios{
+	padding-right:0px;
+}
+.list-md .item-block .item-inner {
+    border-bottom: none;
+}
+.list-ios .item-block .item-inner {
+    border-bottom: none;
+}
+.classButton > .item-inner{
+	border-bottom: 1px solid #185e85 !important;
+}
+.classButton.item-block{
+	min-height:0px
+}
+.label-ios {
+     margin: 9px 0px 10px 0px;    
+    color: #185e85;
+    font-size: 16px;
+
+}
+.label-md {
+     margin: 9px 0px 10px 0px;    
+    color: #185e85;
+	font-size: 16px;
+
+}
+.item-ios[detail-push] .item-inner, button.item-ios:not([detail-none]) .item-inner, a.item-ios:not([detail-none]) .item-inner{
+	background-image:none;
+	padding-left:10px;
+	padding-right:10px;
+}
+.item-md[detail-push] .item-inner, button.item-md:not([detail-none]) .item-inner, a.item-md:not([detail-none]) .item-inner{
+	background-image:none;
+		padding-left:10px;
+	padding-right:10px;
+}
+.item-ios.activated{
+	background-color: #185e85;
+	  .label-md {
+		 margin: 9px 0px 10px 0px;    
+		color: #ffffff;
+		font-size: 16px;
+
+	}
+	.label-ios {
+		 margin: 9px 0px 10px 0px;    
+		color: #ffffff;
+		font-size: 16px;
+
+	}
+}
+.item-md.activated{
+	background-color: #185e85;
+	  .label-md {
+		 margin: 9px 0px 10px 0px;    
+		color: #ffffff;
+		font-size: 16px;
+
+	}
+	.label-ios {
+		 margin: 9px 0px 10px 0px;    
+		color: #ffffff;
+		font-size: 16px;
+
+	}
+}
+.classButton:hover {
+  background-color: #185e85;
+	  .label-md {
+		 margin: 9px 0px 10px 0px;    
+		color: #ffffff;
+		font-size: 16px;
+
+	}
+	.label-ios {
+		 margin: 9px 0px 10px 0px;    
+		color: #ffffff;
+		font-size: 16px;
+	}
+}
+.classButton:active {
+  background-color: #185e85;
+	  .label-md {
+		 margin: 9px 0px 10px 0px;    
+		color: #ffffff;
+		font-size: 16px;
+
+	}
+	.label-ios {
+		 margin: 9px 0px 10px 0px;    
+		color: #ffffff;
+		font-size: 16px;
+
+	}
+} 
+#floatRight{
+	float:left;
+	padding-top: 5px;
+}
+#floatLeft{
+	float:right;
+	padding-top: 5px;
+}
+#scrollMenu.content-md{
+	background-image:url(../assets/imgs/menu2.jpg);
+	background-repeat: round;
+}
+#scrollMenu.content-ios{
+	background-image:url(../assets/imgs/menu2.jpg);
+	background-repeat: round;
+}
+.toolbar-background-ios{
+	background-color:#ffffff;
+}
+.toolbar-background-md{
+	background-color:#ffffff;
+}

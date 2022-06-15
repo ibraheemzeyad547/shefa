@@ -1,0 +1,48 @@
+<ion-menu [content]="content" type="push" swipeEnabled="false" side="left" id="left-menu">
+  <ion-header id="scrollMenuHeader">
+    <ion-toolbar>
+      <ion-title>
+      <img src="assets/imgs/menu1.png" *ngIf="lang==1">
+      <img src="assets/imgs/home1En.png" *ngIf="lang==2">
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content id="scrollMenu">
+    <ion-list>
+      <button menuClose ion-item class="classButton" (click)="functionChangelang(langSelect)">
+      {{langText}}   <ion-icon id="{{ 'id' | translate }}" ios="ios-globe" md="md-globe"></ion-icon>
+      </button>
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" class="classButton">
+        {{p.title}}   <ion-icon id="{{ 'id' | translate }}" ios="ios-arrow-{{ 'side' | translate }}" md="md-arrow-{{ 'side' | translate }}"></ion-icon>
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<ion-menu [content]="content" type="push" swipeEnabled="false" side="right" id="right-menu">
+  <ion-header id="scrollMenuHeader">
+    <ion-toolbar>
+      <ion-title>
+      <img src="assets/imgs/menu1.png" *ngIf="lang==1">
+      <img src="assets/imgs/home1En.png" *ngIf="lang==2">
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content id="scrollMenu">
+    <ion-list>
+      <button menuClose ion-item class="classButton" (click)="functionChangelang(langSelect)">
+      {{langText}}   <ion-icon id="{{ 'id' | translate }}" ios="ios-globe" md="md-globe"></ion-icon>
+      </button>
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" class="classButton">
+        {{p.title}}   <ion-icon id="{{ 'id' | translate }}" ios="ios-arrow-{{ 'side' | translate }}" md="md-arrow-{{ 'side' | translate }}"></ion-icon>
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

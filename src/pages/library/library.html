@@ -1,0 +1,143 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons right>
+	<button ion-button icon-only (click)="goBack()">
+          <ion-icon id="{{ 'id' | translate }}" ios="ios-arrow-{{ 'side' | translate }}" md="md-arrow-{{ 'side' | translate }}"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-title>{{ 'LibrarysTitle' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="action-sheets-basic-page">
+<div>
+<ion-card>
+    <div class="styleText">
+    <ion-grid>
+        <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+            <ion-col>
+                <div style="text-align: -webkit-center;" (click)="openModelPage(1)">
+                	<img src="assets/imgs/library/1.jpg" style="border-radius: 5px;">
+                </div>
+            </ion-col>
+            <ion-col>
+				<div style="text-align: -webkit-center;" (click)="openModelPage(2)">
+                	<img src="assets/imgs/library/2.jpg" style="border-radius: 5px;">
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    </div>
+</ion-card>
+<ion-card>
+    <div class="styleText">
+    <ion-grid>
+        <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+            <ion-col>
+                <div style="text-align: -webkit-center;" (click)="openModelPage(3)">
+                	<img src="assets/imgs/library/3.jpg" style="border-radius: 5px;">
+                </div>
+            </ion-col>
+            <ion-col>
+				<div style="text-align: -webkit-center;" (click)="openModelPage(4)">
+                	<img src="assets/imgs/library/4.jpg" style="border-radius: 5px;">
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    </div>
+</ion-card>
+<ion-card>
+    <div class="styleText">
+    <ion-grid>
+        <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+            <ion-col>
+                <div style="text-align: -webkit-center;" (click)="openModelPage(5)">
+                	<img src="assets/imgs/library/5.jpg" style="border-radius: 5px;">
+                </div>
+            </ion-col>
+            <ion-col>
+				<div style="text-align: -webkit-center;" (click)="openModelPage(6)">
+                	<img src="assets/imgs/library/6.jpg" style="border-radius: 5px;">
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    </div>
+</ion-card>
+<ion-card>
+    <div class="styleText">
+    <ion-grid>
+        <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+            <ion-col>
+                <div style="text-align: -webkit-center;" (click)="openModelPage(7)">
+                	<img src="assets/imgs/library/7.jpg" style="border-radius: 5px;">
+                </div>
+            </ion-col>
+            <ion-col>
+				<div style="text-align: -webkit-center;" (click)="openModelPage(8)">
+                	<img src="assets/imgs/library/8.jpg" style="border-radius: 5px;">
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    </div>
+</ion-card>
+<ion-card>
+    <div class="styleText">
+    <ion-grid>
+        <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+            <ion-col>
+                <div style="text-align: -webkit-center;" (click)="openModelPage(9)">
+                	<img src="assets/imgs/library/9.jpg" style="border-radius: 5px;">
+                </div>
+            </ion-col>
+            <ion-col>
+				<div style="text-align: -webkit-center;" (click)="openModelPage(10)">
+                	<img src="assets/imgs/library/10.jpg" style="border-radius: 5px;">
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    </div>
+</ion-card>
+<ion-card>
+    <div class="styleText">
+    <ion-grid>
+        <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+            <ion-col>
+                <div style="text-align: -webkit-center;" (click)="openModelPage(11)">
+                	<img src="assets/imgs/library/11.jpg" style="border-radius: 5px;">
+                </div>
+            </ion-col>
+            <ion-col>
+				<div style="text-align: -webkit-center;" (click)="openModelPage(12)">
+                	<img src="assets/imgs/library/12.jpg" style="border-radius: 5px;">
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    </div>
+</ion-card>
+</div>
+</ion-content>
+<ion-footer [ngStyle]="{'display': showAllALLMaqolat}">
+<ion-toolbar>
+<div class="container">
+  <div id="firsArow">&nbsp;</div>
+  <div id="testRow" >
+    <div>
+    <marquee scrollamount="3" direction="{{ 'alignMsg' | translate }}" truespeed style="padding-top:6px">
+    	<span dir="{{ 'direction' | translate }}" style="color:#ffffff;font-size:15px">
+        	<span >{{forAllALLMaqolat}}</span>
+        </span>
+    </marquee>
+    </div>
+  </div>  
+  <div id="scoundArrow">&nbsp;</div>
+</div>
+</ion-toolbar>
+</ion-footer>

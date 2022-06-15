@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons right>
+        <button ion-button icon-only (click)="goBack()">
+          {{ 'close' | translate }}
+        </button>
+      </ion-buttons>
+    <ion-title>{{pageName}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content >
+	<div style="text-align:center">
+        <img src="{{imageName}}" style="width:50%; height:50%">
+    </div>
+    <div  class="bookName">
+        {{pageName}}
+    </div>
+    <div>
+        <ion-card>
+        <div class="styleText">
+        <ion-grid>
+            <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%; border-bottom:1px solid">
+                <ion-col>
+                    <div style="text-align: -webkit-center;">
+                        <div style="padding-bottom:5px;">{{bookPageVer}}</div>
+                        <div style="padding-bottom:5px;">{{ 'bookPage' | translate }}</div>
+                    </div>
+                </ion-col>
+                <ion-col>
+                    <div style="text-align: -webkit-center;border-left:1px solid; border-right:1px solid">
+                        <div style="padding-bottom:5px;" *ngIf="bookNumber!=6">1</div>
+                        <div style="padding-bottom:5px;" *ngIf="bookNumber==6">2</div>
+                        <div style="padding-bottom:5px;">{{ 'bookData' | translate }}</div>
+                    </div>
+                </ion-col>
+                 <ion-col>
+                    <div style="text-align: -webkit-center;" >
+                        <div style="padding-bottom:5px;">{{bookEditionVer}}</div>
+                        <div style="padding-bottom:5px;">{{ 'bookEdition' | translate }}</div>
+                    </div>
+                </ion-col>
+            </ion-row>
+            <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+                <ion-col>
+                    <div style="text-align: -webkit-center;">
+                        <div style="padding-bottom:5px;">{{bookyearVer}}</div>
+                        <div style="padding-bottom:5px;">{{ 'bookyear' | translate }}</div>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+        </div>
+        </ion-card>
+    </div>
+    <div style="text-align:center; margin-top:11px;padding-right:13px;padding-left:13px;">
+    	<button class="submit" id="submit" ion-button type="button" block (click)="openPdfFile()" style="text-transform:none">{{ 'fileB' | translate }} </button>
+    </div>
+</ion-content>

@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<div style="text-align:center; padding-bottom:10px">
+	<img src="assets/imgs/home1.png" style="max-width:75%">
+</div>
+   <div style="text-align:center; padding-bottom:10px; padding-top:10px" id="media1">
+    <img src="assets/imgs/home.png" usemap="#image-map" class="spin">
+    <map name="image-map">
+        <area  (click)="goToScientificissuesPage()" coords="759,137,390,314" shape="rect">
+        <area  (click)="goToScientificissuesPage()" coords="767,207,58" shape="circle">
+        <area  (click)="goToScientificissuesPage()"  coords="384,209,61" shape="circle">
+        
+        <area (click)="goToQuestionandanswerPage()" coords="282,357,116" shape="circle">
+        <area  (click)="goToQuestionandanswerPage()" coords="203,381,71" shape="circle">
+        
+        <area coords="243,570,99" shape="circle" (click)="goToRoquiatalmasPage()">
+        <area coords="151,655,52" shape="circle" (click)="goToRoquiatalmasPage()">
+        <area coords="146,488,50" shape="circle" (click)="goToRoquiatalmasPage()">
+        <area coords="104,608,158,536" shape="rect" (click)="goToRoquiatalmasPage()">
+        
+        <area coords="322,782,86" shape="circle" (click)="goToRoquiatalseherPage()">
+        <area coords="255,772,98" shape="circle" (click)="goToRoquiatalseherPage()">
+        <area coords="285,878,59" shape="circle" (click)="goToRoquiatalseherPage()">
+        
+        <area coords="744,1038,409,820" shape="rect" (click)="goToRoquiatalayenPage()">
+        <area coords="413,932,79" shape="circle" (click)="goToRoquiatalayenPage()">
+        <area coords="761,944,66" shape="circle" (click)="goToRoquiatalayenPage()">
+        
+        <area coords="861,780,111" shape="circle" (click)="goToWerdalroquiaPage()">
+        <area coords="975,741,38" shape="circle" (click)="goToWerdalroquiaPage()">
+        <area coords="858,900,41" shape="circle" (click)="goToWerdalroquiaPage()">
+        
+        <area coords="930,571,110" shape="circle" (click)="goToRoquiatalmareadPage()">
+        <area coords="1025,442,960,700" shape="rect" (click)="goToRoquiatalmareadPage()">
+        
+        <area (click)="goToGeneralroquiaPage()" coords="862,359,113" shape="circle">
+        <area (click)="goToGeneralroquiaPage()" coords="987,411,27" shape="circle">
+        <area (click)="goToGeneralroquiaPage()" coords="856,226,30" shape="circle">
+    </map>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar style="padding-top:20px">
+    <ion-row>
+	<ion-col col-4> 
+		<button ion-button class="button" (click)="goToConsultationPage()"><img src="assets/imgs/consultation.png" width="10px" height="18px" style="width:10px">&nbsp;<span style="padding-bottom:5px">{{ 'consultation' | translate }}</span></button>
+	</ion-col>
+	<ion-col col-4> 
+		<button ion-button class="button" (click)="goToLibraryPage()"><img src="assets/imgs/library.png" width="17px" height="17px" style="width:17px">&nbsp;<span style="padding-bottom:5px">{{ 'library' | translate }}</span></button>
+	</ion-col>
+	<ion-col col-4>
+		<button ion-button class="button" (click)="goToFavoritesPage()"><img src="assets/imgs/star.png" width="17px" height="17px" style="width:17px">&nbsp;<span style="padding-bottom:5px">{{ 'favorites' | translate }}</span></button>
+	</ion-col>
+</ion-row>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,149 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons right>
+	<button ion-button icon-only (click)="goBack()">
+          <ion-icon id="{{ 'id' | translate }}" ios="ios-arrow-{{ 'side' | translate }}" md="md-arrow-{{ 'side' | translate }}"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-title>{{ 'scientificissues' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="action-sheets-basic-page">
+<div style="padding-left:10px; padding-right:10px">
+ <ion-row>
+    <ion-col col-6> 
+        <div class="containerNew" (click)="goToPageNumber(1)">
+           <div><img src="assets/imgs/scientificBack.png" style="width: 100%;"></div>
+            <div class="centered">
+                <div class="scientific">{{ 'scientific1' | translate }}</div>
+            </div>
+        </div>
+	</ion-col>
+    <ion-col col-6> 
+        <div class="containerNew" (click)="goToPageNumber(2)">
+           <div><img src="assets/imgs/scientificBack.png" style="width: 100%;"></div>
+            <div class="centered">
+                <div class="scientific">{{ 'scientific2_1' | translate }}<br>{{ 'scientific2_2' | translate }}</div>
+            </div>
+        </div>
+	</ion-col>
+     <ion-col col-6> 
+        <div class="containerNew" (click)="goToPageNumber(3)">
+           <div><img src="assets/imgs/scientificBack.png" style="width: 100%;"></div>
+            <div class="centered">
+                <div class="scientific">{{ 'scientific3' | translate }}</div>
+            </div>
+        </div>
+	</ion-col>
+    <ion-col col-6> 
+        <div class="containerNew" (click)="goToPageNumber(4)">
+           <div><img src="assets/imgs/scientificBack.png" style="width: 100%;"></div>
+            <div class="centered">
+                <div class="scientific">{{ 'scientific4' | translate }}</div>
+            </div>
+        </div>
+	</ion-col>
+     <ion-col col-6> 
+        <div class="containerNew" (click)="goToPageNumber(5)">
+           <div><img src="assets/imgs/scientificBack.png" style="width: 100%;"></div>
+            <div class="centered">
+                <div class="scientific">{{ 'scientific5' | translate }}</div>
+            </div>
+        </div>
+	</ion-col>
+    <ion-col col-6> 
+        <div class="containerNew" (click)="goToPageNumber(6)">
+           <div><img src="assets/imgs/scientificBack.png" style="width: 100%;"></div>
+            <div class="centered">
+                <div class="scientific">{{ 'scientific6' | translate }}</div>
+            </div>
+        </div>
+	</ion-col>
+    <ion-col col-6> 
+        <div class="containerNew" (click)="goToPageNumber(7)">
+           <div><img src="assets/imgs/scientificBack.png" style="width: 100%;"></div>
+            <div class="centered">
+                <div class="scientific">{{ 'scientific7' | translate }}</div>
+            </div>
+        </div>
+	</ion-col>
+    <ion-col col-6> 
+        <div class="containerNew" (click)="goToPageNumber(8)">
+           <div><img src="assets/imgs/scientificBack.png" style="width: 100%;"></div>
+            <div class="centered">
+                <div class="scientific">{{ 'scientific8' | translate }}</div>
+            </div>
+        </div>
+	</ion-col>
+	<ion-col col-6> 
+        <div class="containerNew" (click)="goToPageNumber(9)">
+           <div><img src="assets/imgs/scientificBack.png" style="width: 100%;"></div>
+            <div class="centered">
+                <div class="scientific">{{ 'scientific9_1' | translate }}<br>{{ 'scientific9_2' | translate }}</div>
+            </div>
+        </div>
+	</ion-col>
+    <ion-col col-6> 
+        <div class="containerNew" (click)="goToPageNumber(10)">
+           <div><img src="assets/imgs/scientificBack.png" style="width: 100%;"></div>
+            <div class="centered">
+                <div class="scientific">{{ 'scientific10' | translate }}</div>
+            </div>
+        </div>
+	</ion-col>
+ 	<ion-col col-6> 
+        <div class="containerNew" (click)="goToPageNumber(11)">
+           <div><img src="assets/imgs/scientificBack.png" style="width: 100%;"></div>
+            <div class="centered">
+                <div class="scientific">{{ 'scientific11_1' | translate }}<br>{{ 'scientific11_2' | translate }}</div>
+            </div>
+        </div>
+	</ion-col>
+    <ion-col col-6> 
+        <div class="containerNew" (click)="goToPageNumber(12)">
+           <div><img src="assets/imgs/scientificBack.png" style="width: 100%;"></div>
+            <div class="centered">
+                <div class="scientific">{{ 'scientific12_1' | translate }}<br>{{ 'scientific12_2' | translate }}</div>
+            </div>
+        </div>
+	</ion-col>
+    <ion-col col-6> 
+        <div class="containerNew" (click)="goToPageNumber(13)">
+           <div><img src="assets/imgs/scientificBack.png" style="width: 100%;"></div>
+            <div class="centered">
+                <div class="scientific">{{ 'scientific13_1' | translate }}<br>{{ 'scientific13_2' | translate }}</div>
+            </div>
+        </div>
+	</ion-col>
+    <ion-col col-6> 
+        <div class="containerNew" (click)="goToPageNumber(14)">
+           <div><img src="assets/imgs/scientificBack.png" style="width: 100%;"></div>
+            <div class="centered">
+                <div class="scientific">{{ 'scientific14_1' | translate }}<br>{{ 'scientific14_2' | translate }}</div>
+            </div>
+        </div>
+	</ion-col>
+</ion-row>
+</div>
+</ion-content>
+<ion-footer [ngStyle]="{'display': showAllALLMaqolat}">
+<ion-toolbar>
+<div class="container">
+  <div id="firsArow">&nbsp;</div>
+  <div id="testRow" >
+    <div>
+    <marquee scrollamount="3" direction="{{ 'alignMsg' | translate }}" truespeed style="padding-top:6px">
+    	<span dir="{{ 'direction' | translate }}" style="color:#ffffff;font-size:15px">
+        	<span >{{forAllALLMaqolat}}</span>
+        </span>
+    </marquee>
+    </div>
+  </div>  
+  <div id="scoundArrow">&nbsp;</div>
+</div>
+</ion-toolbar>
+</ion-footer>

@@ -1,0 +1,8 @@
+{
+  "name": "shefa",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "id": "77f5030f"
+}

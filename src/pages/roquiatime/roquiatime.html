@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons right>
+	<button ion-button icon-only (click)="goBack()">
+          <ion-icon id="{{ 'id' | translate }}" ios="ios-arrow-{{ 'side' | translate }}" md="md-arrow-{{ 'side' | translate }}"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-title>{{ 'alertHear' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="action-sheets-basic-page">
+<div *ngFor="let item of allpages; let i = index">
+<ion-card *ngIf="pageName[i]==1">
+  <ion-item>
+    <div class="styleText"><span>{{ 'ontime' | translate }}</span> <span style="font-size:17px; font-weight:bold">{{hourNum[i]}}:{{minuteNum[i]}} {{ampmNum[i]}}</span><img id="{{ 'id' | translate }}" src="assets/imgs/delete.png" style="width:25px; height:25px;padding-top:0px" (click)="removeTimeMark(item,i)"></div>
+  </ion-item>
+</ion-card>
+</div>
+</ion-content>
+<ion-footer>
+<ion-toolbar>
+<div style="text-align:center; margin-top:11px;padding-right:0px;padding-left:0px;">
+  <button class="submit" id="submit" ion-button block>
+    <ion-datetime #picker displayFormat="hh:mm A" pickerFormat="hh mm A"  (ionChange)="saveBookMark($event)" cancelText="{{ 'close' | translate }}" doneText="{{ 'ok' | translate }}"></ion-datetime>
+    <ion-icon name="calendar"></ion-icon>
+  </button>
+  </div>
+<br>
+<div class="container" *ngIf="showAllALLMaqolat">
+  <div id="firsArow">&nbsp;</div>
+  <div id="testRow" >
+  	 <div>
+    <marquee scrollamount="3"direction="{{ 'alignMsg' | translate }}" truespeed style="padding-top:6px">
+    	<span dir="{{ 'direction' | translate }}" style="color:#ffffff;font-size:15px">
+        	<span >{{forAllALLMaqolat}}</span>
+        </span>
+    </marquee>
+    </div>
+  </div>  
+  <div id="scoundArrow">&nbsp;</div>
+</div>
+</ion-toolbar>
+</ion-footer>

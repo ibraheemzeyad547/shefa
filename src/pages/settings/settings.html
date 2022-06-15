@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons right>
+	<button ion-button icon-only (click)="goBack()">
+          <ion-icon id="{{ 'id' | translate }}" ios="ios-arrow-{{ 'side' | translate }}" md="md-arrow-{{ 'side' | translate }}"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-title>{{ 'Settings' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="action-sheets-basic-page">
+    <div class="{{ 'styleSettingFirst' | translate }}" (click)="userAppRate()">{{ 'evaluate' | translate }}<ion-icon id="{{ 'id' | translate }}" ios="ios-arrow-{{ 'side' | translate }}" md="md-arrow-{{ 'side' | translate }}" style="padding-top: 0px;"></ion-icon></div>
+    <div class="{{ 'styleSettingFirst' | translate }}" style="margin-top:10px" (click)="sharingSosial()">{{ 'deploy' | translate }}<ion-icon id="{{ 'id' | translate }}" ios="ios-arrow-{{ 'side' | translate }}" md="md-arrow-{{ 'side' | translate }}" style="padding-top: 0px;"></ion-icon></div>
+    <div class="{{ 'styleSettingFirst' | translate }}" style="margin-top:10px" (click)="openMenu()">{{ 'alertHear' | translate }}<ion-icon id="{{ 'id' | translate }}" ios="ios-arrow-{{ 'side' | translate }}" md="md-arrow-{{ 'side' | translate }}" style="padding-top: 0px;"></ion-icon></div>
+    <div class="{{ 'styleSettingFirst' | translate }}" style="margin-top:10px" (click)="openMenu2()">{{ 'alertHealing' | translate }}<ion-icon id="{{ 'id' | translate }}" ios="ios-arrow-{{ 'side' | translate }}" md="md-arrow-{{ 'side' | translate }}" style="padding-top: 0px;"></ion-icon></div>
+    <div class="{{ 'styleSettingFirst' | translate }}" style="margin-top:10px" (click)="openMenu3()">{{ 'closeHearRead' | translate }}<ion-icon id="{{ 'id' | translate }}" ios="ios-arrow-{{ 'side' | translate }}" md="md-arrow-{{ 'side' | translate }}" style="padding-top: 0px;"></ion-icon></div>
+    <div class="{{ 'styleSettingFirst' | translate }}" style="margin-top:10px" (click)="openMenu4()">{{ 'runMediaBackgound' | translate }}<ion-icon id="{{ 'id' | translate }}" ios="ios-arrow-{{ 'side' | translate }}" md="md-arrow-{{ 'side' | translate }}" style="padding-top: 0px;"></ion-icon></div>
+</ion-content>

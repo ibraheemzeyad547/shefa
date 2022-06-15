@@ -1,0 +1,202 @@
+page-library {
+ion-header{
+		background-color:#185e85;
+	}
+	.toolbar{
+		margin-top: 13px;
+	}
+	.toolbar-background{
+		background-color:#185e85;
+	}
+	.bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default{
+		color:#ffffff;
+	}
+	.bar-button-menutoggle-ios ion-icon{
+		font-size: 3rem;
+	}
+	.bar-button-default-md, .bar-button-default.bar-button-md-default, .bar-button-clear-md-default{
+		color:#ffffff;
+	}
+	.bar-button-menutoggle-md ion-icon{
+		font-size: 3rem;
+	}
+	.toolbar-title-md{
+		white-space:nowrap;
+		text-align:center
+	}
+	.toolbar-title{
+		color:#ffffff;
+		line-height:2;
+		padding-bottom:10px
+	}ion-content{
+		background-image: url('../assets/imgs/menu3.jpg');
+		background-repeat:no-repeat;
+	background-size:100% 100%;
+		margin-top:10px;
+	}
+	
+	.styleText{
+		font-size: 16px;
+		color:#185e85;
+	}
+	.styleTextIcon{
+		font-size: 25px;
+		color:#185e85;
+	}
+	.label-ios{margin:0; margin-top:15px; margin-bottom:13px}
+	.label-md{margin:0; margin-top:15px; margin-bottom:13px}
+	.card-ios{border-radius:4px; margin-top:0px; margin-bottom:7px}
+	.card-md{border-radius:4px; margin-top:0px; margin-bottom:7px}
+	.footer-md .toolbar-background{
+		height: 35px !important
+	}
+	.footer-ios .toolbar-background{
+		height: 35px !important
+	}
+	
+	ion-footer{
+		padding-right:10px;
+		padding-left:10px;
+	}
+	ion-footer > .toolbar-md{
+	padding:0px;
+	}
+	ion-footer > .toolbar-ios{
+	padding:0px;
+	}
+	#testRow{
+		background-image:url(../assets/imgs/marquee.png);
+		 background-repeat:round;
+  		background-size: cover;
+		height: 35px !important;
+		width:99%;
+	}
+	ion-toolbar > .toolbar-background{
+		background-color:transparent;
+	}
+	.footer-md::before{
+		height:0px !important
+	}
+	ion-toolbar > .toolbar{
+		margin-top: 0px;
+	}
+	.footer-ios .toolbar-ios{
+		min-height:35px !important
+	}
+	.footer-md .toolbar-md{
+		min-height:35px !important;
+	}
+	#firsArow{
+		background-image:url(../assets/imgs/001.png);
+		 background-repeat:round;
+  		background-size: cover;
+		height: 35px !important;
+		width: 15px;
+	}
+	#scoundArrow{
+		background-image:url(../assets/imgs/0001.png);
+		 background-repeat:round;
+  		background-size: cover;
+		height: 35px !important;
+		width: 15px;
+	}
+	#col1{
+		padding:0px !important;
+		width:15px !important;
+		max-width:15px !important;
+		top:16px
+	}
+	#col2{
+		padding: 0px !important;
+		width: 100% !important;
+		max-width: 100% !important;
+		flex: 90%;
+	}
+	#col3{
+		padding:0px !important;
+		width:15px !important;
+		max-width:15px !important;
+		top:16px
+	}
+	ion-toolbar > .toolbar-content-md{
+		margin-bottom:3px
+	}
+	ion-toolbar > .toolbar-content-ios{
+		margin-bottom:3px
+	}
+	.segment-ios .segment-button:last-of-type{
+		border-left-width:0px !important
+	}
+	.marquee {width: 50%;white-space: nowrap;}
+	.marquee span {display: inline-block;animation: marquee 500s linear infinite;}
+	@keyframes marquee {
+		0% {
+		transform: translate(-100%, 0);
+		}
+		100% {
+		transform: translate(0, 0);
+		}
+	}
+	.marqueeLeft {width: 50%;white-space: nowrap;}
+	.marqueeLeft span {display: inline-block;animation: marqueeLeft 500s linear infinite;}
+	@keyframes marqueeLeft {
+		0% {
+		transform: translate(0, 0);
+		}
+		100% {
+		transform: translate(-100%, 0);
+		}
+	}
+	.container {
+		display: flex;
+		direction:ltr
+	}
+	.footer-ios .toolbar-ios:first-child .toolbar-background-ios{
+		border:0px;
+	}
+	.footer-md .toolbar-md:first-child .toolbar-background-md{
+		border:0px;
+	}
+	.list-ios{
+		margin:0px
+	}
+	.list-md{
+		margin:0px
+	}
+	.list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block{
+		border:0px
+	}
+	.list-ios > .item-block:first-child{
+		border:0px
+	}
+	.list-md > .item-block:last-child, .list-md > .item-wrapper:last-child .item-block{
+		border:0px
+	}
+	.list-md > .item-block:first-child{
+		border:0px
+	}
+	.toast-md .toast-message {
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-align: center;
+}
+.toolbar-title-ios{
+    font-size: 20px;
+	font-weight:normal;
+}
+.toolbar-title-md{
+    font-size: 20px;
+	font-weight:normal;
+}
+.card-ios{
+	background:none;
+	box-shadow:none
+}
+.card-md{
+	background:none;
+	box-shadow:none
+}
+.displayNone{
+		display:none
+	}	
+}
